@@ -1,11 +1,24 @@
 const  express = require('express');
 const web = express();
+const fs = require("fs");
 
 web.listen(2198,function(err){
     if(err)console.log(err)
     else console.log("sever start");
 })
+web.get("/:name",function(require,response){
+    const {name} = require.params;
+    const filedata = fs.readFileSync(`./data/${name}.json`,{encoding:'utf-8'});
+    const dataarr = JSON.parse(filedata);
+    let html = "ul";
+    for(let i = 0; i< dataarr.length; i++ ){
+        let item = dataarr[i];
+        html = html +`<li>${item}<li>`;
 
+    }
+    html = html +"</ul>";
+
+})
 
 web.get('/',function(require,response){
     response.sendFile(__dirname+"/index.html");
