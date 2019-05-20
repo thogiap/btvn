@@ -1,0 +1,16 @@
+- user:
+    - username: string
+    - password: string
+    - avatar: string
+    - name: string
+
+
+- posts:
+    - author: ObjectId
+    - date: date
+    - post: string
+    - view: number
+    - title: string
+    - like: number
+    - image: string
+    - 
